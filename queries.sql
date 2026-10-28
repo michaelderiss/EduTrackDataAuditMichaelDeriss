@@ -70,20 +70,51 @@ Result (copied as CSV):
 (Didn't print anything but was verified with 'SELECT * FROM enrollments WHERE id = 18')
 
 ---------------------------------------------
-## Q6 Adding missing row
+## Q7 Updating null rows w/ default
 
-My query: INSERT INTO enrollments (id, student_id, student_name, student_email, course_id, course_title, category, enrollment_date, completion_percentage, passed, monthly_fee_paid, instructor) VALUES
-(18,  3, 'Lucia Fernandes',   'lucia.fernandes@student.edutrack.com', 5, 'Advanced Python',      'Programming',      '2025-04-01',  0, FALSE, 69.99, 'Carlos Vega');
+My query: UPDATE enrollments SET instructor = 'Pending assignment' WHERE instructor is null;
 
 Result (copied as CSV):
-(Didn't print anything but was verified with "SELECT * FROM enrollments WHERE id = 18")
+(Didn't print anything but was verified with "SELECT * FROM enrollments WHERE instructor is null");
 
+---------------------------------------------
+## Q8 Deleting test.com emails
 
+My query:  DELETE from enrollments where student_email LIKE '%test.com';
 
+Result (copied as CSV):
+id,student_id,student_name,student_email,course_id,course_title,category,enrollment_date,completion_percentage,passed,monthly_fee_paid,instructor
+  
+1,1,Emily Watson,emily.watson@student.edutrack.com,1,Intro to Python,Programming,2024-03-10,85,true,49.99,Marta López
+2,1,Emily Watson,emily.watson@student.edutrack.com,2,Web Design Basics,Design,2024-04-15,60,false,39.99,Carlos Vega
+3,2,Klaus Weber,klaus.weber@student.edutrack.com,1,Intro to Python,Programming,2024-03-12,92,true,49.99,Marta López
+4,2,Klaus Weber,klaus.weber@student.edutrack.com,3,Data Analysis with SQL,Data,2024-05-01,78,true,59.99,Marta López
+5,3,Lucia Fernandes,lucia.fernandes@student.edutrack.com,2,Web Design Basics,Design,2024-06-20,5,false,39.99,Carlos Vega
+6,3,Lucia Fernandes,lucia.fernandes@student.edutrack.com,4,Digital Marketing 101,Marketing,2024-07-01,3,false,29.99,Lucia Prades
+7,4,Marco Rossi,marco.rossi@student.edutrack.com,5,Advanced Python,Programming,2024-02-14,95,true,69.99,Carlos Vega
+8,4,Marco Rossi,marco.rossi@student.edutrack.com,1,Intro to Python,Programming,2024-08-09,88,true,49.99,Marta López
+9,5,Yuki Nakamura,yuki.nakamura@student.edutrack.com,3,Data Analysis with SQL,Data,2024-09-03,45,false,59.99,Marta López
+12,7,Priya Sharma,priya.sharma@student.edutrack.com,4,Digital Marketing 101,Marketing,2024-12-01,70,true,29.99,Lucia Prades
+15,7,Priya Sharma,priya.sharma@student.edutrack.com,1,Intro to Python,Programming,2025-01-10,55,false,49.99,Marta López
+16,6,Pierre Dubois,pierre.dubois@student.edutrack.com,3,Data Analysis with SQL,Data,2025-02-20,20,false,59.99,Marta López
+17,1,Emily Watson,emily.watson@student.edutrack.com,5,Advanced Python,Programming,2025-03-05,40,false,69.99,Carlos Vega
+18,3,Lucia Fernandes,lucia.fernandes@student.edutrack.com,5,Advanced Python,Programming,2025-04-01,0,false,69.99,Carlos Vega
+10,5,Yuki Nakamura,yuki.nakamura@student.edutrack.com,6,UI/UX Fundamentals,Design,2024-10-11,0,false,44.99,Pending assignment
+11,6,Pierre Dubois,pierre.dubois@student.edutrack.com,6,UI/UX Fundamentals,Design,2024-11-05,0,false,44.99,Pending assignment
 
+-------------------------------------
 
+## Q9 Deleting test.com emails
 
+My query: SELECT category, COUNT(*) AS row_count FROM enrollments GROUP BY category;
 
+Result (copied as CSV):
+category,row_count
 
+Marketing,2
+Programming,7
+Design,4
+Data,3
 
+-----------------------------------
 
