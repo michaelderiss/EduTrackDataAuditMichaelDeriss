@@ -24,4 +24,34 @@ id,student_id,student_name,student_email,course_id,course_title,category,enrollm
 11,6,Pierre Dubois,pierre.dubois@student.edutrack.com,6,UI/UX Fundamentals,Design,2024-11-05,0,false,44.99,null
 
 -------------------------------------
+## Q3 - Null instructors
+My query: SELECT * from enrollments WHERE instructor is NULL;
+Result (copied as CSV):
+id,student_id,student_name,student_email,course_id,course_title,category,enrollment_date,completion_percentage,passed,monthly_fee_paid,instructor
+
+10,5,Yuki Nakamura,yuki.nakamura@student.edutrack.com,6,UI/UX Fundamentals,Design,2024-10-11,0,false,44.99,null
+11,6,Pierre Dubois,pierre.dubois@student.edutrack.com,6,UI/UX Fundamentals,Design,2024-11-05,0,false,44.99,null
+
+--------------------------------------
+## Q4 - top 5 completion %
+My query: SELECT student_name, student_id, completion_percentage from enrollments ORDER BY completion_percentage desc LIMIT 5; 
+Result (copied as CSV):
+student_name,student_id,completion_percentage
+
+Marco Rossi,4,95
+Klaus Weber,2,92
+Marco Rossi,4,88
+Emily Watson,1,85
+Klaus Weber,2,78
+
+
+
+
+
+
+
+
+
+
+
 
