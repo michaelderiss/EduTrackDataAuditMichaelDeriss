@@ -118,3 +118,41 @@ Data,3
 
 -----------------------------------
 
+## Q10 Computing averages
+
+My query: SELECT course_title, AVG(completion_percentage) AS average_completion FROM enrollments GROUP BY course_title;
+
+Result (copied as CSV):
+
+course_title,average_completion
+Data Analysis with SQL,47.6666666666666667
+Web Design Basics,32.5000000000000000
+Digital Marketing 101,36.5000000000000000
+Advanced Python,45.0000000000000000
+UI/UX Fundamentals,0.00000000000000000000
+Intro to Python,80.0000000000000000
+
+---------------------------------------
+
+## Q11 Courses with more than 3 enrollments
+
+My query: SELECT course_title, COUNT(id) AS total_enrollments FROM enrollments GROUP BY course_title HAVING COUNT(id) > 3;
+
+Result (copied as CSV):
+course_title,total_enrollments
+
+Intro to Python,4
+
+---------------------------------------
+
+## Q12 Total Revenue
+
+My query: SELECT category, SUM(monthly_fee_paid) AS total_revenue FROM enrollments GROUP BY category ORDER BY total_revenue DESC;
+
+Result (copied as CSV):
+category,total_revenue
+
+Programming,409.93
+Data,179.97
+Design,169.96
+Marketing,59.98
